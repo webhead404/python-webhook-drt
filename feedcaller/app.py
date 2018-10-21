@@ -69,7 +69,7 @@ def makeWebhookResult(data,requesttype):
             # if outageStatus is None:
             # return {}
     
-        speech = outageStatus
+        speech = sensorStatus
 
         print("Response:")
         print(speech)
@@ -81,45 +81,6 @@ def makeWebhookResult(data,requesttype):
             # "contextOut": [],
             "source": "central-agent-webhook"
         }
-    elif requesttype == 'quote':
-        for d in data:
-            contents = data.get('contents')
-            quotes = contents.get('quotes')
-            quote = quotes[0].get('quote')
-            author = quotes[0].get('author')
-
-            # if quote is None:
-            #     return {}
-        speech = quote + "  by " + author
-
-        print("Response:")
-        print(speech)
-
-        return {
-            "speech": speech,
-            "displayText": speech,
-            # "data": data,
-            # "contextOut": [],
-            "source": "central-agent-webhook"
-        }
-    elif requesttype == 'meeting':
-        #for d in data:
-        for i in range(len(data)):
-            #subject = data[0].get('Subject')
-            description = data[i].get('mainText')
-    
-            speech = description
-
-            print("Response:")
-            print(speech)
-
-            return {
-                "speech": speech,
-                "displayText": speech,
-                # "data": data,
-                # "contextOut": [],
-                "source": "central-agent-webhook"
-            }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
