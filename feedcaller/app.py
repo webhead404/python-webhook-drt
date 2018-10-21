@@ -65,7 +65,7 @@ def processRequest(req):
 def makeWebhookResult(data,requesttype):
     if requesttype == 'sensor':
         for d in data:
-            outageStatus = data[0].get('outageStatus')
+            sensorStatus = data[0].get('sensorStatus')
             # if outageStatus is None:
             # return {}
     
